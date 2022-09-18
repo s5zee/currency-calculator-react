@@ -1,5 +1,19 @@
 # Currency calculator
 
+## Site preview
+
+![webscreenshot](public/currencysitess.png)
+
+## Demo
+
+https://s5zee.github.io/currency-calculator-react/
+
+## Description
+
+Basic Currency calculator 
+
+## Additional information
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
