@@ -2,7 +2,7 @@
 
 ## Site preview
 
-![webscreenshot](public/currencysitess.png.png)
+![webscreenshot](public/currencysitess.png)
 
 ## Demo
 
