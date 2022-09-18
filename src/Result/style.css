@@ -1,0 +1,11 @@
+.block {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .block {
+        grid-template-columns: 100%;
+    }
+}
