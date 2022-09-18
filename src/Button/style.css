@@ -1,0 +1,16 @@
+.form__button {
+    width: 100%;
+    border: none;
+    background-color: teal;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form__button:hover {
+    background-color: hsl(180, 100%, 32%);
+}
+
+.form__button:active {
+    background-color: hsl(180, 100%, 37%);
+}
