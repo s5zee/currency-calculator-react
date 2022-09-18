@@ -23,7 +23,6 @@ function App() {
       body={
         <Form
           calculateResult={calculateResult}
-          resultElement={resultElement}
         />
       }
       extraContent={
