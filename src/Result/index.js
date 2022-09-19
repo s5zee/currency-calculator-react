@@ -1,13 +1,13 @@
 import "./style.css";
 
 const Result = ({ resultElement }) => (
-  resultElement.map(result =>
+  resultElement.map(({ id, content }) =>
     <div
       className="block"
-      key={result.id}
+      key={id}
     >
       Kwota w PLN:
-      <span>{result.content}</span>
+      <span>{typeof content === "number" ? content.toFixed(2) : content}</span>
     </div>)
 );
 export default Result;
