@@ -1,7 +1,7 @@
-import "./style.css";
+import { StyledButton } from "./styled"
 
-const Button = ({title}) => (
-    <button className="form__button">{title}</button>
+const Button = ({ title }) => (
+    <StyledButton>{title}</StyledButton>
 );
 
 export default Button;
