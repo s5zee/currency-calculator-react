@@ -1,13 +1,12 @@
-import "./style.css";
+import { Container } from "./styled"
 
 const Result = ({ resultElement }) => (
   resultElement.map(({ id, content }) =>
-    <div
-      className="block"
+    <Container
       key={id}
     >
       Kwota w PLN:
       <span>{typeof content === "number" ? content.toFixed(2) : content}</span>
-    </div>)
+    </Container>)
 );
 export default Result;
