@@ -1,7 +1,7 @@
-import "./style.css";
+import { Span } from "./styled"
 
-const Label = ({title}) => (
-    <span className="form__label">{title}</span>
+const Label = ({ title }) => (
+    <Span>{title}</Span>
 );
 
 export default Label;
