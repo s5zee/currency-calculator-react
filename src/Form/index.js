@@ -1,9 +1,9 @@
 import { useState } from "react";
 import Button from "../Button";
-import "./style.css";
 import Label from "../Label"
+import { Header, Paragraph, Field } from "./styled"
 
-const Form = ({calculateResult}) => {
+const Form = ({ calculateResult }) => {
   const [amountValue, setAmountValue] = useState("");
   const [currency, setCurrency] = useState("");
 
@@ -14,11 +14,10 @@ const Form = ({calculateResult}) => {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <h1 className="form__header">Kalkulator walutowy</h1>
-      <p className="form__paragraph">
+      <Header>Kalkulator walutowy</Header>
+      <Paragraph>
         <Label title="Wybierz waluty:" />
-        <select
-          className="form__field"
+        <Field as="select"
           value={currency}
           onChange={({ target }) => setCurrency(target.value)}
         >
@@ -26,19 +25,18 @@ const Form = ({calculateResult}) => {
           <option value="5.44">Funt-Złoty</option>
           <option value="4.72">Euro-Złoty</option>
           <option value="4.88">Frank Szwajcarski-Złoty</option>
-        </select>
-      </p>
-      <p className="form__paragraph">
+        </Field>
+      </Paragraph>
+      <Paragraph>
         <Label title="Kwota:" />
-        <input
+        <Field
           value={amountValue}
-          className="form__field js-amount"
           required type="number"
           min="0.01"
           step="0.01"
           onChange={({ target }) => setAmountValue(target.value)}
         />
-      </p>
+      </Paragraph>
       <Button title={"Oblicz wartość"} />
     </form>
   )
