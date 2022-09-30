@@ -1,5 +1,5 @@
-import "./style.css";
 import { useState, useEffect } from "react";
+import { Span } from "./styled"
 
 const DateTime = () => {
   const [dateTime, setDateTime] = useState(new Date());
@@ -16,9 +16,9 @@ const DateTime = () => {
   }, []);
 
   return (
-    <span className="fullDate">
+    <Span>
       Dzisiaj jest {dateString}, {timeString}
-    </span>
+    </Span>
   )
 }
 export default DateTime;
