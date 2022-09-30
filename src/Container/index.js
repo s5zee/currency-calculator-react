@@ -1,11 +1,11 @@
-import "./style.css";
+import { StyledContainer } from './styled'
 
-const Container = ({body, extraContent, date}) => (
-    <main className="container">
+const Container = ({ body, extraContent, date }) => (
+    <StyledContainer>
         {date}
         {body}
         {extraContent}
-    </main>
+    </StyledContainer>
 );
 
 export default Container;
