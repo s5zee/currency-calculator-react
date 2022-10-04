@@ -9,10 +9,10 @@ export const StyledButton = styled.button`
     border-radius: 5px;
 
     &:hover {
-    background-color: hsl(180, 100%, 32%);
+        background-color: hsl(180, 100%, 32%);
     }
 
     &:active {
-    background-color: hsl(180, 100%, 37%);
+        background-color: hsl(180, 100%, 37%);
     }
 `;

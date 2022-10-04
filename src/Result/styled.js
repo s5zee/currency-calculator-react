@@ -6,6 +6,6 @@ export const Container = styled.div`
     margin-top: 20px;
 
     @media (max-width: 767px) {
-    grid-template-columns: 100%;
+        grid-template-columns: 100%;
     }
 `;
