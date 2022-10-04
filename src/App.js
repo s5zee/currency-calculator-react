@@ -2,7 +2,7 @@ import Form from "./Form";
 import Container from "./Container";
 import { useState } from "react";
 import Result from "./Result";
-import DateTime from "./Date"
+import Clock from "./Clock";
 
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
   return (
     <Container
-      date={<DateTime />}
+      date={<Clock />}
       body={
         <Form
           calculateResult={calculateResult}
