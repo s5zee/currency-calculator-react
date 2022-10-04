@@ -1,5 +1,5 @@
 import { StyledDateTime } from "./styled";
-import { useCurrentDate } from "./useCurrentDate"
+import { useCurrentDate } from "./useCurrentDate";
 
 const formatDate = (dateTime) => 
   dateTime.toLocaleString(undefined,

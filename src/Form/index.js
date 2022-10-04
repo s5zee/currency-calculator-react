@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button";
 import Label from "../Label"
-import { Header, Paragraph, Field } from "./styled"
+import { Header, Paragraph, Field } from "./styled";
 
 const Form = ({ calculateResult }) => {
   const [amountValue, setAmountValue] = useState("");

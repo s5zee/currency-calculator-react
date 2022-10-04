@@ -1,4 +1,4 @@
-import { Span } from "./styled"
+import { Span } from "./styled";
 
 const Label = ({ title }) => (
     <Span>{title}</Span>

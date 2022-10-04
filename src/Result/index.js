@@ -1,4 +1,4 @@
-import { Container } from "./styled"
+import { Container } from "./styled";
 
 const Result = ({ resultElement }) => (
   resultElement.map(({ id, content }) =>
