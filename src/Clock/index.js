@@ -10,8 +10,7 @@ const formatDate = (dateTime) =>
      hour: "2-digit",
      minute: "2-digit",
      second: "2-digit"
-   });
-
+   });  
 
 const Clock = () => {
   const dateTime = useCurrentDate();
