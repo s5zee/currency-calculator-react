@@ -5,30 +5,31 @@ import { Header, Paragraph, Field } from "./styled";
 
 const Form = ({ calculateResult }) => {
   const [amountValue, setAmountValue] = useState("");
-  const [currency, setCurrency] = useState("");
+  const [initialCurrency, setinitialCurrency] = useState("");
+  const [secondaryCurrency, setSecondaryCurrency] = useState("");
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult(amountValue, currency);
+    calculateResult(amountValue, initialCurrency, secondaryCurrency);
   };
 
   return (
     <form onSubmit={onFormSubmit}>
       <Header>Kalkulator walutowy</Header>
       <Paragraph>
-        <Label title="Wybierz waluty:" />
+        <Label title="Mam:" />
         <Field as="select"
-          value={currency}
-          onChange={({ target }) => setCurrency(target.value)}
+          value={initialCurrency}
+          onChange={({ target }) => setinitialCurrency(target.value)}
         >
-          <option value="" />
-          <option value="5.44">Funt-Złoty</option>
-          <option value="4.72">Euro-Złoty</option>
-          <option value="4.88">Frank Szwajcarski-Złoty</option>
+          <option value="1">Złoty</option>
+          <option value="5.44">Funt</option>
+          <option value="4.72">Euro</option>
+          <option value="4.88">Frank Szwajcarski</option>
         </Field>
       </Paragraph>
       <Paragraph>
-        <Label title="Kwota:" />
+        <Label title="Kwota do przeliczenia:" />
         <Field
           value={amountValue}
           required type="number"
@@ -36,6 +37,18 @@ const Form = ({ calculateResult }) => {
           step="0.01"
           onChange={({ target }) => setAmountValue(target.value)}
         />
+      </Paragraph>
+      <Paragraph>
+        <Label title="Chcę otrzymać" />
+        <Field as="select"
+          value={secondaryCurrency}
+          onChange={({ target }) => setSecondaryCurrency(target.value)}
+        >
+          <option value="1">Złoty</option>
+          <option value="5.44">Funt</option>
+          <option value="4.72">Euro</option>
+          <option value="4.88">Frank Szwajcarski</option>
+        </Field>
       </Paragraph>
       <Button title={"Oblicz wartość"} />
     </form>
