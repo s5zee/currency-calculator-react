@@ -22,6 +22,7 @@ const Form = ({ calculateResult }) => {
           value={initialCurrency}
           onChange={({ target }) => setinitialCurrency(target.value)}
         >
+          <option value="" />
           <option value="1">Złoty</option>
           <option value="5.44">Funt</option>
           <option value="4.72">Euro</option>
@@ -44,6 +45,7 @@ const Form = ({ calculateResult }) => {
           value={secondaryCurrency}
           onChange={({ target }) => setSecondaryCurrency(target.value)}
         >
+          <option value="" />
           <option value="1">Złoty</option>
           <option value="5.44">Funt</option>
           <option value="4.72">Euro</option>
