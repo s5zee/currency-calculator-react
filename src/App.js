@@ -10,14 +10,15 @@ function App() {
     { id: 1, content: "N/A" },
   ]);
 
-  const calculateResult = (amountValue, currency) => {
-    if (currency === "") {
-      return;
+  const calculateResult =
+    (amountValue, initialCurrency, secondaryCurrency) => {
+      setResultElement(resultElement.map(result => {
+        return {
+          ...result, content: amountValue *
+            initialCurrency / secondaryCurrency
+        }
+      }));
     };
-    setResultElement(resultElement.map(result => {
-      return { ...result, content: amountValue * currency }
-    }));
-  };
 
   return (
     <Container
