@@ -5,7 +5,7 @@ const Result = ({ resultElement }) => (
     <Container
       key={id}
     >
-      Kwota w PLN:
+      Kwota po przeliczeniu:
       <span>{typeof content === "number" ? content.toFixed(2) : content}</span>
     </Container>)
 );
