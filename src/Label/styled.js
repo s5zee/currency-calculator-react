@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
 export const Span = styled.span`
-    width: 150px;
+    width: auto;
     display: inline-block;
 `;
