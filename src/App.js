@@ -12,6 +12,11 @@ function App() {
 
   const calculateResult =
     (amountValue, initialCurrency, secondaryCurrency) => {
+      if (initialCurrency === "") {
+        return;
+      } else if (secondaryCurrency === "") {
+        return;
+      }
       setResultElement(resultElement.map(result => {
         return {
           ...result, content: amountValue *
