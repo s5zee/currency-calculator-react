@@ -1,59 +1,88 @@
 import { useState } from "react";
 import Button from "../Button";
-import Label from "../Label"
-import { Header, Paragraph, Field } from "./styled";
+import Label from "../Label";
+import Result from "../Result";
+import { Header, Paragraph, Field, Container, Span } from "./styled";
+import { useApiData } from "./useApiData";
 
-const Form = ({ calculateResult }) => {
+const Form = (/*{ calculateResult }*/) => {
   const [amountValue, setAmountValue] = useState("");
-  const [initialCurrency, setinitialCurrency] = useState("");
-  const [secondaryCurrency, setSecondaryCurrency] = useState("");
+  const [initialCurrency, setinitialCurrency] = useState("PLN");
+  const [secondaryCurrency, setSecondaryCurrency] = useState("EUR");
+  const [result, setResult] = useState("");
+  const { state, date, ratesData } = useApiData();
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-    calculateResult(amountValue, initialCurrency, secondaryCurrency);
+    calculateResult(amountValue, initialCurrency, secondaryCurrency, ratesData);
   };
+
+  const calculateResult =
+    (amountValue, initialCurrency, secondaryCurrency, ratesData) => {
+      const initialSelectRate = ratesData.rates[initialCurrency];
+      const secondarySelectRate = ratesData.rates[secondaryCurrency];
+      setResult({
+        InputAmount: amountValue,
+        initialCurrency,
+        calculatedAmount: amountValue * initialSelectRate / secondarySelectRate,
+        secondaryCurrency
+      })
+    }
 
   return (
     <form onSubmit={onFormSubmit}>
       <Header>Kalkulator walutowy</Header>
-      <Paragraph>
-        <Label title="Mam:" />
-        <Field as="select"
-          value={initialCurrency}
-          onChange={({ target }) => setinitialCurrency(target.value)}
-        >
-          <option value="" />
-          <option value="1">Złoty</option>
-          <option value="5.44">Funt</option>
-          <option value="4.72">Euro</option>
-          <option value="4.88">Frank Szwajcarski</option>
-        </Field>
-      </Paragraph>
-      <Paragraph>
-        <Label title="Kwota do przeliczenia:" />
-        <Field
-          value={amountValue}
-          required type="number"
-          min="0.01"
-          step="0.01"
-          onChange={({ target }) => setAmountValue(target.value)}
-        />
-      </Paragraph>
-      <Paragraph>
-        <Label title="Chcę otrzymać" />
-        <Field as="select"
-          value={secondaryCurrency}
-          onChange={({ target }) => setSecondaryCurrency(target.value)}
-        >
-          <option value="" />
-          <option value="1">Złoty</option>
-          <option value="5.44">Funt</option>
-          <option value="4.72">Euro</option>
-          <option value="4.88">Frank Szwajcarski</option>
-        </Field>
-      </Paragraph>
-      <Button title={"Oblicz wartość"} />
+      {state.state === "loading" ? (
+        <Span>Trwa ładowanie proszę czekać.</Span>) :
+        (state.state === "error") ?
+          (<Span>Uwaga wystąpił błąd,
+            sprawdź swoje połączenie internetowe
+            lub spróbuj ponownie za chwile.</Span>) :
+          state.state === "success" ? (
+            <>
+              <Paragraph>
+                <Label title="Mam:" />
+                <Field as="select"
+                  value={initialCurrency}
+                  onChange={({ target }) => setinitialCurrency(target.value)}
+                >
+                  {Object.keys(ratesData.rates).map((rate) => (
+                    <option key={rate} value={rate}>{rate}</option>
+                  ))}
+                </Field>
+              </Paragraph>
+              <Paragraph>
+                <Label title="Kwota do przeliczenia:" />
+                <Field
+                  value={amountValue}
+                  required type="number"
+                  min="0.01"
+                  step="0.01"
+                  onChange={({ target }) => setAmountValue(target.value)}
+                />
+              </Paragraph>
+              <Paragraph>
+                <Label title="Chcę otrzymać" />
+                <Field as="select"
+                  value={secondaryCurrency}
+                  onChange={({ target }) => setSecondaryCurrency(target.value)}
+                >
+                  {Object.keys(ratesData.rates).map(rate => (
+                    <option key={rate} value={rate}>{rate}</option>
+                  ))}
+                </Field>
+              </Paragraph>
+              <Button title={"Oblicz wartość"} />
+              <Container>
+                Kursy walut pobierane są z ECB (European central bank)
+              </Container>
+              <Container>aktualne na dzień: <b>{date.date}</b> </Container>
+              <Result result={result} />
+            </>
+          )
+            : null
+      }
     </form>
-  )
+  );
 };
 export default Form;
