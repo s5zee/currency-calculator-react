@@ -1,12 +1,13 @@
 import { Container } from "./styled";
 
-const Result = ({ resultElement }) => (
-  resultElement.map(({ id, content }) =>
-    <Container
-      key={id}
-    >
-      Kwota po przeliczeniu:
-      <span>{typeof content === "number" ? content.toFixed(2) : content}</span>
-    </Container>)
+const Result = ({ result }) => (
+  <Container>
+    {result.InputAmount} {""}
+    {result.initialCurrency} = {""}
+    {typeof result.calculatedAmount === "number" ?
+      result.calculatedAmount.toFixed(2) :
+      result.calculatedAmount} {""}
+    {result.secondaryCurrency}
+  </Container>
 );
 export default Result;
