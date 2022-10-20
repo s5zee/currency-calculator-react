@@ -1,10 +1,9 @@
 import { StyledContainer } from './styled';
 
-const Container = ({ body, extraContent, date }) => (
+const Container = ({ body, date }) => (
     <StyledContainer>
         {date}
         {body}
-        {extraContent}
     </StyledContainer>
 );
 
