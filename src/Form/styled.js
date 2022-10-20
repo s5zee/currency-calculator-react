@@ -19,3 +19,17 @@ export const Field = styled.input`
     max-width: 500px;
     border-radius: 5px;
 `;
+
+export const Container = styled.div`
+    display: grid;
+    justify-items: center;
+    margin: 15px;
+    font-family: monospace;
+    font-size: small;
+`;
+export const Span = styled.span`
+    display: grid;
+    justify-items: center;
+    color: teal;
+    font-size: large;
+`;
