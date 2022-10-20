@@ -5,7 +5,7 @@ import Result from "../Result";
 import { Header, Paragraph, Field, Container, Span } from "./styled";
 import { useApiData } from "./useApiData";
 
-const Form = (/*{ calculateResult }*/) => {
+const Form = () => {
   const [amountValue, setAmountValue] = useState("");
   const [initialCurrency, setinitialCurrency] = useState("PLN");
   const [secondaryCurrency, setSecondaryCurrency] = useState("EUR");
