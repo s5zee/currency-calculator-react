@@ -10,7 +10,7 @@ const Form = () => {
   const [initialCurrency, setinitialCurrency] = useState("PLN");
   const [secondaryCurrency, setSecondaryCurrency] = useState("EUR");
   const [result, setResult] = useState("");
-  const { state, date, ratesData } = useApiData();
+  const { ratesData } = useApiData();
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -22,23 +22,23 @@ const Form = () => {
       const initialSelectRate = ratesData.rates[initialCurrency];
       const secondarySelectRate = ratesData.rates[secondaryCurrency];
       setResult({
-        InputAmount: amountValue,
+        inputAmount: amountValue,
         initialCurrency,
         calculatedAmount: amountValue * initialSelectRate / secondarySelectRate,
         secondaryCurrency
-      })
-    }
+      });
+    };
 
   return (
     <form onSubmit={onFormSubmit}>
       <Header>Kalkulator walutowy</Header>
-      {state.state === "loading" ? (
+      {ratesData.state === "loading" ? (
         <Span>Trwa ładowanie proszę czekać.</Span>) :
-        (state.state === "error") ?
+        (ratesData.state === "error") ?
           (<Span>Uwaga wystąpił błąd,
             sprawdź swoje połączenie internetowe
             lub spróbuj ponownie za chwile.</Span>) :
-          state.state === "success" ? (
+          ratesData.state === "success" ? (
             <>
               <Paragraph>
                 <Label title="Mam:" />
@@ -76,7 +76,7 @@ const Form = () => {
               <Container>
                 Kursy walut pobierane są z ECB (European central bank)
               </Container>
-              <Container>aktualne na dzień: <b>{date.date}</b> </Container>
+              <Container>aktualne na dzień: <b>{ratesData.date}</b> </Container>
               <Result result={result} />
             </>
           )
