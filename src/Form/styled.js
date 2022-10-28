@@ -25,11 +25,11 @@ export const Container = styled.div`
     justify-items: center;
     margin: 15px;
     font-family: monospace;
-    font-size: small;
+    font-size: 13px;
 `;
 export const Span = styled.span`
     display: grid;
     justify-items: center;
-    color: teal;
-    font-size: large;
+    color: hsl(180, 100%, 25%);
+    font-size: 18px;
 `;

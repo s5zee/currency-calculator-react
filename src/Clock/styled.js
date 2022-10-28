@@ -5,5 +5,5 @@ export const StyledDateTime = styled.span`
     justify-content: flex-end;
     font-family: monospace;
     font-size: 12px;
-    color: grey;
+    color: hsl(0, 0%, 50%);
 `;
