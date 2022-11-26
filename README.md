@@ -10,7 +10,7 @@ https://s5zee.github.io/currency-calculator-react/
 
 ## Description
 
-Basic Currency calculator 
+Basic Currency calculator, using React, 2 select fields with api mapped currencies, value field, clock, result
 
 ## Additional information
 
